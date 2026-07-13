@@ -8,8 +8,8 @@ VAR
 	MoverTop		   : XtsMover('Top 1', 0, XtsTop);
 	MoverBottom		   : XtsMover('Bottom 1', 0, XtsBottom);
 	_State			   : UDINT;
-	MasterSyncPos	   : LREAL := 1750;
-	SlaveSyncPos	   : LREAL := 2250;
+	MasterSyncPos	   : LREAL := 1_500;
+	SlaveSyncPos	   : LREAL := 2_000;
 	UnwrappedMasterPos : LREAL;
 	UnwrappedSlavePos  : LREAL;
 
@@ -50,6 +50,7 @@ CASE _State OF
 		END_IF
 
 	20:
+		MoverTop.Parameters.SyncAxis.SyncMode := XtsCore.Tc3_McCollisionAvoidance.MC_SYNC_MODE.mcSyncModePositive;
 		MoverTop.SyncToAxis(Master := MoverBottom.Axis, MasterSyncPosition := MasterSyncPos, SlaveSyncPosition := SlaveSyncPos);
 		NextMinorStep(_State);
 
