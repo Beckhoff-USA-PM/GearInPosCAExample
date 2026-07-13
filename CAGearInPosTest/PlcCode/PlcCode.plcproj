@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{57865d0d-0749-442c-bcf2-f8f12e543d79}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>true</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>PlcCode</Name>
+    <ProgramVersion>3.1.4026.24</ProgramVersion>
+    <Application>{be2dad28-db01-4502-91ef-4139b68f8c79}</Application>
+    <TypeSystem>{df4eb035-d146-4721-af62-b1284b96bf56}</TypeSystem>
+    <Implicit_Task_Info>{b72195be-3144-458d-a63f-15711ff5d971}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{1ebb7d5e-9aa0-4f06-aa98-8a72860b14c1}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{2415b26c-0bc1-4c7e-8f73-ff6101e1232c}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{b0d28e3b-34d7-4769-af43-4497b4077017}</LibraryReferences>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_Functions\ErrorStep.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_Functions\IsValidInterface.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_Functions\NextMinorStep.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_Functions\NextStep.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_Functions\SetStep.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VISUs" />
+    <Folder Include="POUs" />
+    <Folder Include="_Functions" />
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+      <SystemLibrary>true</SystemLibrary>
+    </PlaceholderReference>
+    <PlaceholderReference Include="XtsCore">
+      <DefaultResolution>XtsCore, * (Beckhoff Automation LLC)</DefaultResolution>
+      <Namespace>XtsCore</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="CAA Callback">
+      <Resolution>CAA Callback Extern, 3.5.17.0 (CAA Technical Workgroup)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CAA FB Factory">
+      <Resolution>CAA FB Factory, 3.5.19.0 (CAA Technical Workgroup)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CAA MemBlockMan">
+      <Resolution>CAA Memory Block Manager Extern, 3.5.18.0 (CAA Technical Workgroup)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CAA ResMan">
+      <Resolution>CAA Ressource Manager Extern, 3.5.17.0 (CAA Technical Workgroup)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CAA Types">
+      <Resolution>CAA Types Extern, 3.5.17.0 (CAA Technical Workgroup)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CmpApp">
+      <Resolution>CmpApp, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CmpBitmapPool">
+      <Resolution>CmpBitmapPool, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CmpEventMgr">
+      <Resolution>CmpEventMgr, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CmpEventMgr Implementation">
+      <Resolution>CmpEventMgr Implementation, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="CmpSchedule">
+      <Resolution>CmpSchedule, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Component Manager">
+      <Resolution>Component Manager, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Core">
+      <Resolution>Core, 1.3.0 (Beckhoff Automation LLC)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="ElementCollections">
+      <Resolution>Element Collections, 4.0.0.0 (CODESYS)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Standard">
+      <Resolution>Tc2_Standard, 3.4.7.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Standard64">
+      <Resolution>Tc2_Standard, 3.4.7.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="StringUtils">
+      <Resolution>StringUtils, 3.5.20.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysCpuHandling">
+      <Resolution>SysCpuHandling, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysDir">
+      <Resolution>SysDir, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysFile">
+      <Resolution>SysFile, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysMem">
+      <Resolution>SysMem, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysSem">
+      <Resolution>SysSem, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysSem Implementation">
+      <Resolution>SysSem Implementation, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemBase">
+      <Resolution>VisuElemBase, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemMeter">
+      <Resolution>VisuElemMeter, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElems">
+      <Resolution>VisuElems, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemsSpecialControls">
+      <Resolution>VisuElemsSpecialControls, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemsWinControls">
+      <Resolution>VisuElemsWinControls, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuElemTextEditor">
+      <Resolution>VisuElemTextEditor, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuInputs">
+      <Resolution>VisuInputs, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="System_VisuNativeControl">
+      <Resolution>VisuNativeControl, * (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysTime">
+      <Resolution>SysTime, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysTimeCore">
+      <Resolution>SysTimeCore, 3.5.17.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="SysTimeRtc">
+      <Resolution>SysTimeRtc, 3.5.20.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_EtherCAT">
+      <Resolution>Tc2_EtherCAT, 3.7.2.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_IoFunctions">
+      <Resolution>Tc2_IoFunctions, 3.4.7.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Math">
+      <Resolution>Tc2_Math, 3.5.3.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_MC2">
+      <Resolution>Tc2_MC2, 3.3.73.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_NC">
+      <Resolution>Tc2_NC, 3.3.11.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Standard">
+      <Resolution>Tc2_Standard, 3.4.7.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_System">
+      <Resolution>Tc2_System, 3.10.2.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Utilities">
+      <Resolution>Tc2_Utilities, 3.10.6.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_DynamicMemory">
+      <Resolution>Tc3_DynamicMemory, 1.1.6.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_EventLogger">
+      <Resolution>Tc3_EventLogger, 3.3.15.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_JsonXml">
+      <Resolution>Tc3_JsonXml, 3.4.9.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_McCollisionAvoidance">
+      <Resolution>Tc3_McCollisionAvoidance, 3.4.67.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_McCoordinatedMotion">
+      <Resolution>Tc3_McCoordinatedMotion, 3.4.67.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_Module">
+      <Resolution>Tc3_Module, 3.4.7.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_PackML_V3">
+      <Resolution>Tc3_PackML_V3, 1.0.6.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_XTS_Utility">
+      <Resolution>Tc3_XTS_Utility, 4.4.18.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="VisuDialogs">
+      <Resolution>VisuDialogs, 4.8.0.0 (System)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="XtsCore">
+      <Resolution>XtsCore, 0.12.1.17 (Beckhoff Automation LLC)</Resolution>
+    </PlaceholderResolution>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PlcCode.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+  <Data>
+    <o xml:space="preserve" t="OptionKey">
+      <v n="Name">"&lt;ProjectRoot&gt;"</v>
+      <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+        <v>{29BD8D0C-3586-4548-BB48-497B9A01693F}</v>
+        <o>
+          <v n="Name">"{29BD8D0C-3586-4548-BB48-497B9A01693F}"</v>
+          <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+            <v>Rules</v>
+            <o>
+              <v n="Name">"Rules"</v>
+              <d n="SubKeys" t="Hashtable" />
+              <d n="Values" t="Hashtable" />
+            </o>
+          </d>
+          <d n="Values" t="Hashtable" />
+        </o>
+        <v>{8A0FB252-96EB-4DCC-A5B4-B4804D05E2D6}</v>
+        <o>
+          <v n="Name">"{8A0FB252-96EB-4DCC-A5B4-B4804D05E2D6}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="Boolean">
+            <v>WriteLineIDs</v>
+            <v>False</v>
+          </d>
+        </o>
+        <v>{8F99A816-E488-41E4-9FA3-846536012284}</v>
+        <o>
+          <v n="Name">"{8F99A816-E488-41E4-9FA3-846536012284}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="String">
+            <v>DisabledWarningIds</v>
+            <v>410,5410</v>
+          </d>
+        </o>
+        <v>{F66C7017-BDD8-4114-926C-81D6D687E35F}</v>
+        <o>
+          <v n="Name">"{F66C7017-BDD8-4114-926C-81D6D687E35F}"</v>
+          <d n="SubKeys" t="Hashtable" />
+          <d n="Values" t="Hashtable" ckt="String" cvt="Boolean">
+            <v>CalcActiveTransOnly</v>
+            <v>True</v>
+          </d>
+        </o>
+      </d>
+      <d n="Values" t="Hashtable" />
+    </o>
+  </Data>
+  <TypeList>
+    <Type n="Boolean">System.Boolean</Type>
+    <Type n="Hashtable">System.Collections.Hashtable</Type>
+    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+    <Type n="String">System.String</Type>
+  </TypeList>
+</XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>

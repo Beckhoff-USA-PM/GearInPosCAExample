@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.18">
+  <POU Name="MAIN" Id="{87c8fadf-ac4b-418d-8e1e-1c80c8335c57}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	XtsTop			   : XtsSystem('XTS ProcessingUnit 1');
+	XtsBottom		   : XtsSystem('XTS ProcessingUnit 2');
+	MoverTop		   : XtsMover('Top 1', 0, XtsTop);
+	MoverBottom		   : XtsMover('Bottom 1', 0, XtsBottom);
+	_State			   : UDINT;
+	MasterSyncPos	   : LREAL := 1750;
+	SlaveSyncPos	   : LREAL := 2250;
+	UnwrappedMasterPos : LREAL;
+	UnwrappedSlavePos  : LREAL;
+
+	//Reversing sequence
+	distance : LREAL := 250;
+	timer	 : TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT XtsTop.Initialized OR NOT XtsBottom.Initialized THEN
+	XtsTop.Initialize();
+	XtsBottom.Initialize();
+	XtsTop.Parameters.Velocity	   := 500;
+	XtsTop.Parameters.Acceleration := 10_000;
+	XtsTop.Parameters.Deceleration := 10_000;
+	XtsTop.Parameters.Jerk		   := 200_000;
+	XtsBottom.Parameters.CopyFrom(XtsTop.Parameters);
+	RETURN;
+END_IF
+
+CASE _State OF
+	0:
+		XtsTop.Enable();
+		XtsBottom.Enable();
+		IF XtsTop.Enabled AND XtsBottom.Enabled THEN
+			NextMinorStep(_State);
+		END_IF
+
+	10:
+		MoverTop.Parameters.CopyFrom(XtsTop.Parameters);
+		MoverBottom.Parameters.CopyFrom(XtsTop.Parameters);
+		MoverTop.MoveToPosition(2000);
+		MoverBottom.MoveToPosition(1500);
+		NextMinorStep(_State);
+
+	11:
+		IF NOT MoverTop.Busy AND NOT MoverBottom.Busy THEN
+			NextStep(_State);
+		END_IF
+
+	20:
+		MoverTop.SyncToAxis(Master := MoverBottom.Axis, MasterSyncPosition := MasterSyncPos, SlaveSyncPosition := SlaveSyncPos);
+		NextMinorStep(_State);
+
+	21:
+		IF MoverTop.Status.InSync THEN
+			NextStep(_State);
+		END_IF
+
+	//Sequence for doing the coupling with an unwrap of the modulo and absolute position
+	50:
+		MoverTop.Parameters.CopyFrom(XtsTop.Parameters);
+		MoverBottom.Parameters.CopyFrom(XtsTop.Parameters);
+		MoverTop.MoveToPosition(2_000);
+		MoverBottom.MoveToPosition(1_500);
+		NextMinorStep(_State);
+
+	51:
+		IF NOT MoverTop.Busy AND NOT MoverBottom.Busy THEN
+			NextStep(_State);
+		END_IF
+
+	60:
+		UnwrappedMasterPos					  := LREAL_TO_UDINT(MoverTop.Axis.NcToPlc.SetPos / MoverTop.Status.CurrentTrack.Length) * MoverTop.Status.CurrentTrack.Length + MasterSyncPos;
+		UnwrappedSlavePos					  := LREAL_TO_UDINT(MoverBottom.Axis.NcToPlc.SetPos / MoverBottom.Status.CurrentTrack.Length) * MoverBottom.Status.CurrentTrack.Length + SlaveSyncPos;
+		MoverTop.Parameters.SyncAxis.SyncMode := XtsCore.Tc3_McCollisionAvoidance.MC_SYNC_MODE.mcSyncModeNonModulo;
+		MoverTop.SyncToAxis(Master := MoverBottom.Axis, MasterSyncPosition := UnwrappedMasterPos, SlaveSyncPosition := UnwrappedSlavePos);
+		NextMinorStep(_State);
+
+	61:
+		IF MoverTop.Status.InSync THEN
+			NextStep(_State);
+		END_IF
+
+	70:
+	//
+	100:
+		//Show the coupling
+		MoverBottom.MoveToPosition(Position := MoverBottom.Position + distance, Direction := XtsCore.Tc3_Mc3Definitions.MC_DIRECTION.mcDirectionShortestWay);
+		NextMinorStep(_State);
+
+	101:
+		IF NOT MoverBottom.Busy THEN
+			NextStep(_State);
+		END_IF
+
+	110:
+		timer(IN := TRUE, PT := T#2S);
+		IF timer.Q THEN
+			TIMER(IN := FALSE);
+			distance := distance * -1;
+			SetStep(_State, 100);
+		END_IF
+END_CASE
+
+XtsTop.CyclicLogic();
+XtsBottom.CyclicLogic();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
